@@ -70,8 +70,9 @@ public class GameController implements Runnable {
 		int i = 0, m = size / 5, n = size % 5;
 		StringBuffer string1 = null;
 		for (Goods one : GameController.all_goods) {
-			if (i == 0 && m > 0)
+			if (i == 0 && m > 0) {
 				string1 = new StringBuffer("5:0501");
+			}
 			else if (i == 0 && m == 0) {
 				string1 = new StringBuffer(n + ":0501");
 			}
