@@ -1,6 +1,7 @@
 # Swing_Server
 Java写的游戏服务器
-部署顺序
+
+# 部署顺序
 1:src/Mysql_operate/BaseDao.java配置mysql数据库
 2:加载resouce/sql/game.sql数据
 3:src/GameStart/ServerStart.java 启动就好了
