@@ -1,19 +1,18 @@
 package GameStart;
 
+import Controller.GameController;
+import Controller.OnlinePeopleController;
+import Enity.OnlinePeople;
+import Mysql_operate.UserDaoImp;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.rmi.ConnectException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import Controller.GameController;
-import Controller.OnlinePeopleController;
-import Enity.OnlinePeople;
-import Mysql_operate.UserDaoImp;
 
 public class ServerStart {
     /**
@@ -41,15 +40,15 @@ public class ServerStart {
     @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception {
         try {
-            ServerSocket ss = new ServerSocket(80);// ¶Ë¿ÚºÅ
-            System.out.println("·şÎñÆ÷ÒÑÆô¶¯£¬µÈ´ıÓÃ»§Á¬½Ó");
+            ServerSocket ss = new ServerSocket(80);// ç«¯å£å·
+            System.out.println("æœåŠ¡å™¨å·²å¯åŠ¨ï¼Œç­‰å¾…ç”¨æˆ·è¿æ¥");
             GameStart.PrepareGame();
             while (true) {
                 Socket socket = ss.accept();
                 new ServerStart(socket);
             }
         } catch (IOException e) {
-            System.out.println("¶Ë¿Ú±»Õ¼ÓÃ");
+            System.out.println("ç«¯å£è¢«å ç”¨");
         }
     }
 
@@ -128,143 +127,143 @@ public class ServerStart {
                 try {
                     if ((info = dis.readUTF()) != null) {
                         a = info.split(":");
-                        // ·şÎñÁ¬½Ó²Ù×÷:00
+                        // æœåŠ¡è¿æ¥æ“ä½œ:00
                         if (a[1].compareTo("0100") < 0) {
                             Date date = new Date();
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ/HHÊ±mm·ÖssÃë");
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥/HHæ—¶mmåˆ†ssç§’");
                             String time = sdf.format(date);
-                            System.out.print(time + ":¡¶±àºÅ:" + a[0] + "¡·");
+                            System.out.print(time + ":ã€Šç¼–å·:" + a[0] + "ã€‹");
                             switch (a[1]) {
                                 case "0000":
-                                    System.out.print("³¢ÊÔµÇÂ½,½á¹û:");
+                                    System.out.print("å°è¯•ç™»é™†,ç»“æœ:");
                                     this.id = userDaoImp.userLogin(a[2], a[3]);
                                     if (!OnlinePeopleController.canLogin(id)) {
                                         dos.writeUTF("-1");
-                                        System.out.println("ÖØ¸´µÇÂ½");
+                                        System.out.println("é‡å¤ç™»é™†");
                                     } else {
                                         dos.writeUTF(this.id + "");
                                         if (this.id == 0) {
-                                            System.out.println("ÕËºÅÃÜÂë´íÎó");
+                                            System.out.println("è´¦å·å¯†ç é”™è¯¯");
                                         } else {
-                                            System.out.println("µÇÂ½³É¹¦£¬ID:" + this.id);
+                                            System.out.println("ç™»é™†æˆåŠŸï¼ŒID:" + this.id);
                                         }
                                     }
                                     break;
                                 case "0001":
-                                    System.out.print("³¢ÊÔ×¢²á,½á¹û:");
+                                    System.out.print("å°è¯•æ³¨å†Œ,ç»“æœ:");
                                     dos.writeUTF(userDaoImp.userRegist(a[2], a[3]) == true ? "1" : "0");
                                     break;
                                 case "0002":
-                                    System.out.println("ÕıÔÚÁ¬½ÓÖĞ");
+                                    System.out.println("æ­£åœ¨è¿æ¥ä¸­");
                                     break;
                             }
                         }
-                        // ¼üÅÌ²Ù×÷:01
+                        // é”®ç›˜æ“ä½œ:01
                         else if (a[1].compareTo("0200") < 0) {
-                            if (a[1].equals("0101")) {// °Ñ¸öÈË²Ù×÷¸æËßÆäËûÈË
+                            if (a[1].equals("0101")) {// æŠŠä¸ªäººæ“ä½œå‘Šè¯‰å…¶ä»–äºº
                                 OnlinePeopleController.change_people(id, Integer.valueOf(a[2]), Integer.valueOf(a[3]));
                                 OutStreamExceptOne(id, info);
                             }
                         }
-                        // ÈËµÄ²Ù×÷:02
+                        // äººçš„æ“ä½œ:02
                         else if (a[1].compareTo("0300") < 0) {
                             switch (a[1]) {
-                                case "0201": // ¼ÓÔØ¸öÈËµÄÓÎÏ·Êı¾İ
+                                case "0201": // åŠ è½½ä¸ªäººçš„æ¸¸æˆæ•°æ®
                                     this.onlinePeople = OnlinePeopleController
                                             .add_people(userDaoImp.user_gamer1(a[0], dis, dos));
                                     break;
-                                case "0202": // ¼ÓÔØ¶ÓÓÑÊı¾İ
+                                case "0202": // åŠ è½½é˜Ÿå‹æ•°æ®
                                     break;
-                                case "0203": // ÁÄÌìÊÒÄÚÈİ
+                                case "0203": // èŠå¤©å®¤å†…å®¹
                                     OutStreamExceptOne(this.id, this.id + ":0403:" + a[2]);
                                     break;
-                                case "0204": // ¸öÈËÎïÆ·ĞÅÏ¢
+                                case "0204": // ä¸ªäººç‰©å“ä¿¡æ¯
                                     connectSelf(this.id + ":0204:" + userDaoImp.OwnGoods(this.id));
                                     break;
-                                case "0207": // Íæ¼Ò×¼±¸½çÃæ¸Ä±ä×´Ì¬
+                                case "0207": // ç©å®¶å‡†å¤‡ç•Œé¢æ”¹å˜çŠ¶æ€
                                     OutStreamExceptOne(this.id, info);
                                     int l = OnlinePeopleController.inInfo(this.id, a[3], a[2]);
                                     if (l != -1) {
                                         leave = l;
                                     }
                                     break;
-                                case "0208": // Íæ¼Ò×´Ì¬µÄ¸Ä±ä
+                                case "0208": // ç©å®¶çŠ¶æ€çš„æ”¹å˜
                                     OutStreamExceptOne(this.id, info);
                                     break;
                             }
                         }
-                        // ¹ÖÎïµÄ²Ù×÷:03
+                        // æ€ªç‰©çš„æ“ä½œ:03
                         else if (a[1].compareTo("0400") < 0) {
                             switch (a[1]) {
-                                case "0301": // ¸öÈËÉËº¦¹ÖÎï
+                                case "0301": // ä¸ªäººä¼¤å®³æ€ªç‰©
                                     GameController.hurt_enemy(Integer.valueOf(a[0]), Integer.valueOf(a[2]),
                                             Integer.valueOf(a[3]));
                                     break;
-                                case "0302": // ¸öÈË´òËÀ¹ÖÎï
+                                case "0302": // ä¸ªäººæ‰“æ­»æ€ªç‰©
                                     GameController.delete_enemy(Integer.valueOf(a[0]), Integer.valueOf(a[2]));
                                     break;
-                                case "0303": // ¸öÈË¿ØÖÆ¹ÖÎï
+                                case "0303": // ä¸ªäººæ§åˆ¶æ€ªç‰©
                                     GameController.stop_enemy(Integer.valueOf(a[0]), Integer.valueOf(a[2]),
                                             Integer.valueOf(a[3]));
                                     break;
-                                case "0304": // ¸öÈËÍË³öÓÎÏ·ÖĞ£¬Á¬½Ó»¹ÔÚ
+                                case "0304": // ä¸ªäººé€€å‡ºæ¸¸æˆä¸­ï¼Œè¿æ¥è¿˜åœ¨
                                     OnlinePeopleController.stop_people(onlinePeople);
                                     break;
-                                case "0305": // ¸öÈËÍêÈ«ÍË³öÓÎÏ·¿Í»§¶Ë
+                                case "0305": // ä¸ªäººå®Œå…¨é€€å‡ºæ¸¸æˆå®¢æˆ·ç«¯
 //								closeOwn();
                                     break;
                             }
                         }
-                        // ÓÎÏ·×ÜÉèÖÃ:04
+                        // æ¸¸æˆæ€»è®¾ç½®:04
                         else if (a[1].compareTo("0500") < 0) {
                             switch (a[1]) {
-                                case "0401": // ¹Ø¿¨/µÚ¼¸¹Ø
+                                case "0401": // å…³å¡/ç¬¬å‡ å…³
 
                                     break;
-                                case "0402": // ÇëÇóÓÎÏ·¿ªÊ¼²¢Í¬Òâ
+                                case "0402": // è¯·æ±‚æ¸¸æˆå¼€å§‹å¹¶åŒæ„
                                     if (GameState) {
                                         gameStart = new GameStart(leave);
                                         GameState = false;
                                         OutStreamAll("1:0402");
                                     }
                                     break;
-                                case "0403": // ÇëÇó¼ÓÔØ¹Ø¿¨ĞÅÏ¢
+                                case "0403": // è¯·æ±‚åŠ è½½å…³å¡ä¿¡æ¯
                                     dos.writeUTF(GameStart.game_leave);
                                     break;
-                                case "0404": // ¿ªÊ¼ÓÎÏ·°´Å¥µã»÷
+                                case "0404": // å¼€å§‹æ¸¸æˆæŒ‰é’®ç‚¹å‡»
                                     OutStreamExceptOne(this.id, "1:0406");
                                     OnlinePeopleController.putChangePoint();
                                     break;
                             }
                         }
-                        // ÉÌ³ÇÎïÆ·:05
+                        // å•†åŸç‰©å“:05
                         else if (a[1].compareTo("0600") < 0) {
-                            if (a[1].equals("0501")) {// ¼ÓÔØÉÌÆ·Êı¾İ
+                            if (a[1].equals("0501")) {// åŠ è½½å•†å“æ•°æ®
                                 GameController.dos_allgoods(this.id);
                             }
                         }
-                        // Êı¾İĞŞ¸Ä:06
+                        // æ•°æ®ä¿®æ”¹:06
                         else if (a[1].compareTo("0700") < 0) {
                             switch (a[1]) {
-                                case "0601": // ¹ÜÀíÔ±½ğÊÖÖ¸
+                                case "0601": // ç®¡ç†å‘˜é‡‘æ‰‹æŒ‡
                                     userDaoImp.Change(a[2]);
                                     break;
-                                case "0602": {// ĞŞ¸Ä½ğÇ®
+                                case "0602": {// ä¿®æ”¹é‡‘é’±
                                     String text = "update gamer_coefficient set `money` =" + a[2] + " where id=" + a[0];
                                     userDaoImp.Change(text);
                                     break;
                                 }
-                                case "0603": {// ĞŞ¸Ä¸öÈËÎïÆ·ĞÅÏ¢
+                                case "0603": {// ä¿®æ”¹ä¸ªäººç‰©å“ä¿¡æ¯
                                     String text = "update own_goods set goods='" + a[2] + "' where id=" + a[0];
                                     userDaoImp.Change(text);
                                     break;
                                 }
-                                case "0604": {// ĞŞ¸Ä´³¹ØÊı
+                                case "0604": {// ä¿®æ”¹é—¯å…³æ•°
                                     String text = "update gamer_coefficient set `leave` =" + a[2] + " where id=" + a[0];
                                     userDaoImp.Change(text);
                                     break;
                                 }
-                                case "0605": {// ĞŞ¸ÄÍæ¼Ò×ø±ê
+                                case "0605": {// ä¿®æ”¹ç©å®¶åæ ‡
                                     String text = "update gamer_coefficient set `x` =" + a[2] + "`y` =" + a[3] + " where id=" + a[0];
                                     userDaoImp.Change(text);
                                     break;
@@ -274,13 +273,13 @@ public class ServerStart {
                     }
                 } catch (SocketException e) {
                     closeOwn();
-                    System.out.printf("¡¶±àºÅ:%d¡·¶Ï¿ª:%s\n", this.id, info);
+                    System.out.printf("ã€Šç¼–å·:%dã€‹æ–­å¼€:%s\n", this.id, info);
                     break;
                 } catch (IOException e) {
-                    System.err.printf("´íÎóÄÚÈİ:%s¡£\n", info);
+                    System.err.printf("é”™è¯¯å†…å®¹:%sã€‚\n", info);
                 } catch (Exception e) {
                     closeOwn();
-                    System.out.printf("Running Time ErrorÇë¼ì²é·şÎñÆ÷Âß¼­´íÎó£º%s\n", info);
+                    System.out.printf("Running Time Errorè¯·æ£€æŸ¥æœåŠ¡å™¨é€»è¾‘é”™è¯¯ï¼š%s\n", info);
                     e.printStackTrace();
                     break;
                 }
@@ -289,7 +288,7 @@ public class ServerStart {
 
         public void closeOwn() {
             Date date = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ/HHÊ±mm·ÖssÃë");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥/HHæ—¶mmåˆ†ssç§’");
             String time = sdf.format(date);
             System.out.print(time + ":");
             try {

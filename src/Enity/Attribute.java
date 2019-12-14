@@ -1,10 +1,6 @@
 package Enity;
 
 import java.io.DataOutputStream;
-import java.io.IOException;
-
-import Controller.OnlinePeopleController;
-import GameStart.ServerStart;
 
 public class Attribute implements Cloneable {
 
@@ -13,51 +9,51 @@ public class Attribute implements Cloneable {
     private int id;
     private int imgId;
     private String name;
-    private int power;// Á¦Á¿
-    private int magic;// Ä§Á¦
-    private int skill;// ¼¼ÇÉ
-    private int speed;// ËÙ¶È
-    private int physical;// ÌåÖÊ
-    private int armor;// »¤¼×
-    private int resistance;// ¿¹ĞÔ
+    private int power;// åŠ›é‡
+    private int magic;// é­”åŠ›
+    private int skill;// æŠ€å·§
+    private int speed;// é€Ÿåº¦
+    private int physical;// ä½“è´¨
+    private int armor;// æŠ¤ç”²
+    private int resistance;// æŠ—æ€§
 
-    // private int con_phy_attack;// ÎïÀíÉËº¦ÏµÊı
-    // private int con_mag_attack;// ·¨ÊõÉËº¦ÏµÊı
-    // private int con_MP;// Ä§Á¦ÖµÏµÊı
-    // private int con_blow;// ±©»÷ÏµÊı
-    // private int con_dodge;// ÉÁ±ÜÂÊ ÏµÊı
-    // private int con_speed_action;// ĞĞ¶¯ËÙ¶ÈÏµÊı
-    // private int con_HP;// ÉúÃüÏµÊı
-    // private int con_phy_defense;// ÎïÀí·ÀÓùÏµÊı
-    // private int con_mag_defense;// ·¨Êõ·ÀÓùÏµÊı
+    // private int con_phy_attack;// ç‰©ç†ä¼¤å®³ç³»æ•°
+    // private int con_mag_attack;// æ³•æœ¯ä¼¤å®³ç³»æ•°
+    // private int con_MP;// é­”åŠ›å€¼ç³»æ•°
+    // private int con_blow;// æš´å‡»ç³»æ•°
+    // private int con_dodge;// é—ªé¿ç‡ ç³»æ•°
+    // private int con_speed_action;// è¡ŒåŠ¨é€Ÿåº¦ç³»æ•°
+    // private int con_HP;// ç”Ÿå‘½ç³»æ•°
+    // private int con_phy_defense;// ç‰©ç†é˜²å¾¡ç³»æ•°
+    // private int con_mag_defense;// æ³•æœ¯é˜²å¾¡ç³»æ•°
 
-    private int con_phy_attack;// ÎïÀíÉËº¦ÏµÊı
-    private int con_mag_attack;// ·¨ÊõÉËº¦ÏµÊı
-    private int con_MP;// Ä§Á¦ÖµÏµÊı
-    private int con_blow;// ±©»÷ÏµÊı
-    private int con_shooting;// ÃüÖĞÏµÊı
-    private int con_dodge;// ÉÁ±ÜÂÊ ÏµÊı
-    private int con_speed_action;// ĞĞ¶¯ËÙ¶ÈÏµÊı
-    private int con_HP;// ÉúÃüÏµÊı
-    private int con_phy_defense;// ÎïÀí·ÀÓùÏµÊı
-    private int con_mag_defense;// ·¨Êõ·ÀÓùÏµÊı
+    private int con_phy_attack;// ç‰©ç†ä¼¤å®³ç³»æ•°
+    private int con_mag_attack;// æ³•æœ¯ä¼¤å®³ç³»æ•°
+    private int con_MP;// é­”åŠ›å€¼ç³»æ•°
+    private int con_blow;// æš´å‡»ç³»æ•°
+    private int con_shooting;// å‘½ä¸­ç³»æ•°
+    private int con_dodge;// é—ªé¿ç‡ ç³»æ•°
+    private int con_speed_action;// è¡ŒåŠ¨é€Ÿåº¦ç³»æ•°
+    private int con_HP;// ç”Ÿå‘½ç³»æ•°
+    private int con_phy_defense;// ç‰©ç†é˜²å¾¡ç³»æ•°
+    private int con_mag_defense;// æ³•æœ¯é˜²å¾¡ç³»æ•°
 
-    private int phy_attack;// ÎïÀíÉËº¦
-    private int mag_attack;// ·¨ÊõÉËº¦
-    private int MP;// Ä§Á¦Öµ
-    private int blow;// ±©»÷
-    private int shooting;// ÃüÖĞ
-    private int dodge;// ÉÁ±ÜÂÊ
-    private int speed_action;// ĞĞ¶¯ËÙ¶È
-    private int HP;// ÉúÃü
-    private int phy_defense;// ÎïÀí·ÀÓù
-    private int mag_defense;// ·¨Êõ·ÀÓù
+    private int phy_attack;// ç‰©ç†ä¼¤å®³
+    private int mag_attack;// æ³•æœ¯ä¼¤å®³
+    private int MP;// é­”åŠ›å€¼
+    private int blow;// æš´å‡»
+    private int shooting;// å‘½ä¸­
+    private int dodge;// é—ªé¿ç‡
+    private int speed_action;// è¡ŒåŠ¨é€Ÿåº¦
+    private int HP;// ç”Ÿå‘½
+    private int phy_defense;// ç‰©ç†é˜²å¾¡
+    private int mag_defense;// æ³•æœ¯é˜²å¾¡
 
-    private int money;//Ç®
+    private int money;//é’±
 
-    public Attribute(int x, int y, int id,int imgId, String name, int money, int con_phy_attack, int con_mag_attack, int con_MP, int// ÏµÊıÉè¶¨
+    public Attribute(int x, int y, int id, int imgId, String name, int money, int con_phy_attack, int con_mag_attack, int con_MP, int// ç³»æ•°è®¾å®š
             con_blow, int con_shooting, int con_dodge, int con_speed_action, int con_HP, int con_phy_defense, int con_mag_defense, int power,
-                     int magic, int skill, int speed, int physical, int armor, int resistance, DataOutputStream dos) {// ÊôĞÔÉè¶¨
+                     int magic, int skill, int speed, int physical, int armor, int resistance, DataOutputStream dos) {// å±æ€§è®¾å®š
         super();
         this.x = x;
         this.y = y;

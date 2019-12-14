@@ -12,13 +12,13 @@ public class Goods {
 	private int y;
 	private String note;
 	private int money;
-	private int power;// Á¦Á¿
-	private int magic;// Ä§Á¦
-	private int skill;// ¼¼ÇÉ
-	private int speed;// ËÙ¶È
-	private int physical;// ÌåÖÊ
-	private int armor;// »¤¼×
-	private int resistance;// ¿¹ĞÔ
+	private int power;// åŠ›é‡
+	private int magic;// é­”åŠ›
+	private int skill;// æŠ€å·§
+	private int speed;// é€Ÿåº¦
+	private int physical;// ä½“è´¨
+	private int armor;// æŠ¤ç”²
+	private int resistance;// æŠ—æ€§
 	private int effect;
 	private int effect_leave;
 	int state = 1;

@@ -1,16 +1,12 @@
 package Mysql_operate;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 class BaseDao {
     private static String driver="com.mysql.jdbc.Driver";
-    private static String url="jdbc:mysql://localhost:3306/game";
+	private static String url = "jdbc:mysql://localhost:3306/rpcgame";
     private static String user="root";
-    private static String password="123456";
+	private static String password = "password";
         static {
             try {
                 Class.forName(driver);
@@ -39,18 +35,18 @@ class BaseDao {
 //    public static int executeSQL(String preparedSql, Object[] param) throws ClassNotFoundException {
 //        Connection conn = null;
 //        PreparedStatement pstmt = null;
-//        /* ´¦ÀíSQL,Ö´ĞĞSQL */
+//        /* å¤„ç†SQL,æ‰§è¡ŒSQL */
 //        try {
-//            conn = getConnection(); // µÃµ½Êı¾İ¿âÁ¬½Ó
-//            pstmt = conn.prepareStatement(preparedSql); // µÃµ½PreparedStatement¶ÔÏó
+//            conn = getConnection(); // å¾—åˆ°æ•°æ®åº“è¿æ¥
+//            pstmt = conn.prepareStatement(preparedSql); // å¾—åˆ°PreparedStatementå¯¹è±¡
 //            if (param != null) {
 //                for (int i = 0; i < param.length; i++) {
-//                    pstmt.setObject(i + 1, param[i]); // ÎªÔ¤±àÒësqlÉèÖÃ²ÎÊı
+//                    pstmt.setObject(i + 1, param[i]); // ä¸ºé¢„ç¼–è¯‘sqlè®¾ç½®å‚æ•°
 //                }
 //            }
-//        ResultSet num = pstmt.executeQuery(); // Ö´ĞĞSQLÓï¾ä
+//        ResultSet num = pstmt.executeQuery(); // æ‰§è¡ŒSQLè¯­å¥
 //        } catch (SQLException e) {
-//            e.printStackTrace(); // ´¦ÀíSQLExceptionÒì³£
+//            e.printStackTrace(); // å¤„ç†SQLExceptionå¼‚å¸¸
 //        } finally {
 //            try {
 //                BaseDao.closeAll(conn, pstmt, null);

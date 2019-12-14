@@ -1,16 +1,16 @@
 package Controller;
 
-import java.awt.Point;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
-
 import Enity.EnemyPeople;
 import Enity.GameMap;
 import Enity.Goods;
 import GameStart.GameStart;
 import GameStart.ServerStart;
+
+import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 @SuppressWarnings("ALL")
 public class GameController implements Runnable {
@@ -25,15 +25,15 @@ public class GameController implements Runnable {
 	public static int leave = 1;
 	public static int minleave;
 	static int die_enemy;
-	public static Vector<EnemyPeople> Enemys;// ¹ÖÎï
-	public static List<Goods> map_goods;// µôÂäÎïÆ·
+	public static Vector<EnemyPeople> Enemys;// æ€ªç‰©
+	public static List<Goods> map_goods;// æ‰è½ç‰©å“
 	public static List<Goods> all_goods = new ArrayList<>();
 	public static List<StringBuffer> goods_leave = new ArrayList<>();
 	static int map = 0;
 	public static int[][][] monster_nums = new int[10][10][3];
 	public static int[] leave_maxs = new int[10];
 	public static int[][] leave_maxsNums = new int[10][10];
-	// public static GameMap map = new GameMap();//µØÍ¼³õÊ¼»¯
+	// public static GameMap map = new GameMap();//åœ°å›¾åˆå§‹åŒ–
 
 	public GameController(int leave) {
 		map_goods = new ArrayList<Goods>();
@@ -114,7 +114,7 @@ public class GameController implements Runnable {
 	public static void Rest_Enemy(int[] nums) throws IOException {
 		Enemys = new Vector<>();
 		die_enemy = 0;
-		System.out.println("´ó¹Ø¿¨" + leave + "//Ğ¡¹Ø¿¨" + minleave + "ÒÑ¿ªÊ¼");
+		System.out.println("å¤§å…³å¡" + leave + "//å°å…³å¡" + minleave + "å·²å¼€å§‹");
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = 0; j < nums[i]; j++) {
 				Point point = GameMap.gamemap.getPoint(leave - 1);
@@ -142,7 +142,7 @@ public class GameController implements Runnable {
 		// while (true) {
 		// try {
 		// } catch (Exception e) {
-		// System.out.println("ÓÎÏ·Ö÷Á÷³Ì¹Ø±Õ");
+		// System.out.println("æ¸¸æˆä¸»æµç¨‹å…³é—­");
 		// break;
 		// }
 		// }

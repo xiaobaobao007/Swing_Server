@@ -1,24 +1,24 @@
 package Controller;
 
-import java.awt.Point;
-import java.io.IOException;
-import java.util.Vector;
-
 import Enity.EnemyPeople;
 import Enity.GameMap;
 import Enity.OnlinePeople;
 import Enity.OwnPeople;
 import GameStart.ServerStart;
 
+import java.awt.*;
+import java.io.IOException;
+import java.util.Vector;
+
 public class OnlinePeopleController {
 
 	private static final int MAX_PEOPLES = 6;
-	public static Vector<OnlinePeople> onlinePeoples = new Vector<>();// Íæ¼Ò¼¯ºÏ
-	public static int online_people = 0;// ÔÚÏßÍæ¼ÒÊıÁ¿
-	private static int[] peoplesIndex = new int[MAX_PEOPLES];// ¸ù¾İÍæ¼Òid²éÕÒIndex
+	public static Vector<OnlinePeople> onlinePeoples = new Vector<>();// ç©å®¶é›†åˆ
+	public static int online_people = 0;// åœ¨çº¿ç©å®¶æ•°é‡
+	private static int[] peoplesIndex = new int[MAX_PEOPLES];// æ ¹æ®ç©å®¶idæŸ¥æ‰¾Index
 
 	/**
-	 * Ôö¼ÓÍæ¼Ò
+	 * å¢åŠ ç©å®¶
 	 *
 	 * @param ownPeople
 	 * @return
@@ -29,9 +29,9 @@ public class OnlinePeopleController {
 		index(ownPeople.getPeople(), online_people);
 		++online_people;
 		try {
-			OutStreamOne(ownPeople.getPeople(), "1:0201" + ownPeople.getAttribute().getString());// ¸øµ±Ç°ÓÃ»§·¢ËÍĞÅÏ¢
-			dos_TeamsToOne(ownPeople.getPeople());// °Ñ¶ÓÓÑĞÅÏ¢¸øµ±Ç°ÓÃ»§
-			ServerStart.OutStreamExceptOne(ownPeople.getPeople(), "1:0202" + ownPeople.getString());// °Ñµ±Ç°ÓÃ»§ĞÅÏ¢·¢ËÍ¸øÆäËû¶ÓÓÑ
+			OutStreamOne(ownPeople.getPeople(), "1:0201" + ownPeople.getAttribute().getString());// ç»™å½“å‰ç”¨æˆ·å‘é€ä¿¡æ¯
+			dos_TeamsToOne(ownPeople.getPeople());// æŠŠé˜Ÿå‹ä¿¡æ¯ç»™å½“å‰ç”¨æˆ·
+			ServerStart.OutStreamExceptOne(ownPeople.getPeople(), "1:0202" + ownPeople.getString());// æŠŠå½“å‰ç”¨æˆ·ä¿¡æ¯å‘é€ç»™å…¶ä»–é˜Ÿå‹
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -39,7 +39,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ¸Ä±äÍæ¼Ò×´Ì¬
+	 * æ”¹å˜ç©å®¶çŠ¶æ€
 	 *
 	 * @param peopleIndexId
 	 * @param state
@@ -49,7 +49,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ¸Ä±äÍæ¼Ò×¼±¸¹Ø¿¨
+	 * æ”¹å˜ç©å®¶å‡†å¤‡å…³å¡
 	 *
 	 * @param peopleIndexId
 	 * @param level
@@ -59,7 +59,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ÊÇ·ñ¿ªÊ¼ÓÎÏ·
+	 * æ˜¯å¦å¼€å§‹æ¸¸æˆ
 	 *
 	 * @return
 	 */
@@ -92,7 +92,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ¸Ä±äÍæ¼Ò×¼±¸×´Ì¬
+	 * æ”¹å˜ç©å®¶å‡†å¤‡çŠ¶æ€
 	 *
 	 * @param id
 	 * @param operation
@@ -110,7 +110,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * °ÑÍæ¼ÒÒÆ³ı
+	 * æŠŠç©å®¶ç§»é™¤
 	 *
 	 * @param onlinePeople
 	 * @return
@@ -141,7 +141,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * Íæ¼Ò·µ»ØÑ¡Ôñ¹Ø¿¨½çÃæ
+	 * ç©å®¶è¿”å›é€‰æ‹©å…³å¡ç•Œé¢
 	 *
 	 * @param onlinePeople
 	 */
@@ -156,7 +156,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ÅĞ¶ÏËùÓĞÍæ¼ÒÊÇ·ñ×¼±¸µÄÒ»¸ö¹Ø¿¨Êı
+	 * åˆ¤æ–­æ‰€æœ‰ç©å®¶æ˜¯å¦å‡†å¤‡çš„ä¸€ä¸ªå…³å¡æ•°
 	 *
 	 * @return
 	 */
@@ -179,7 +179,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * Êä³ö¸öÈËĞÅÏ¢¸ø¸öÈË
+	 * è¾“å‡ºä¸ªäººä¿¡æ¯ç»™ä¸ªäºº
 	 *
 	 * @param Id
 	 * @param info
@@ -193,7 +193,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ¹ÖÎïÒòÎªÅ­Æø×·×ÙÍæ¼ÒËùĞèÒª×ø±êĞÅÏ¢
+	 * æ€ªç‰©å› ä¸ºæ€’æ°”è¿½è¸ªç©å®¶æ‰€éœ€è¦åæ ‡ä¿¡æ¯
 	 *
 	 * @param Id
 	 * @return
@@ -207,7 +207,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ÄÜ·ñµÇÂ½
+	 * èƒ½å¦ç™»é™†
 	 *
 	 * @param Id
 	 * @return
@@ -223,7 +223,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * Êä³ö¶ÓÓÑĞÅÏ¢¸øÒ»¸öÓÃ»§
+	 * è¾“å‡ºé˜Ÿå‹ä¿¡æ¯ç»™ä¸€ä¸ªç”¨æˆ·
 	 *
 	 * @param Id
 	 * @throws IOException
@@ -243,7 +243,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * ¸Ä±äÍæ¼Ò×ø±êĞÅÏ¢
+	 * æ”¹å˜ç©å®¶åæ ‡ä¿¡æ¯
 	 *
 	 * @param Id
 	 * @param type
@@ -264,7 +264,7 @@ public class OnlinePeopleController {
 	}
 
 	/**
-	 * Í£Ö¹ÓÎÏ·Ö÷Á÷³Ì
+	 * åœæ­¢æ¸¸æˆä¸»æµç¨‹
 	 */
 	private static void stop_game() {
 		if (GameController.Enemys != null) {

@@ -2,7 +2,7 @@ package Enity;
 
 public class OnlinePeople {
     private OwnPeople ownPeople;
-    private int state;// -1Î´½øÈëÓÎÏ·¡¢0Î´×¼±¸¡¢1ÒÑ×¼±¸¡¢2½øÈëÓÎÏ·
+	private int state;// -1æœªè¿›å…¥æ¸¸æˆã€0æœªå‡†å¤‡ã€1å·²å‡†å¤‡ã€2è¿›å…¥æ¸¸æˆ
     private int id;
     private int leave;
 

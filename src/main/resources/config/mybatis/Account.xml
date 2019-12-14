@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Account">
+
+    <select id="getAccount" parameterType="String" resultType="Account">
+        SELECT *
+        FROM account
+        WHERE account = #{account};
+    </select>
+
+    <insert id="insertAccount" parameterType="Account">
+        INSERT INTO account (userId, account, password, email, createTime, registIp)
+        VALUES (#{userId}, #{account}, #{password}, #{email}, #{createTime}, #{registIp});
+    </insert>
+
+    <update id="updateAccount" parameterType="Account">
+        UPDATE account
+        SET email = #{email}
+        WHERE account = #{account};
+    </update>
+
+</mapper>
