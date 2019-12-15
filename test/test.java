@@ -1,5 +1,4 @@
 import main.java.dao.AccountDao;
-import main.java.db.Account;
 import main.java.framework.manager.MybatisManager;
 import org.junit.Before;
 import org.junit.Test;
