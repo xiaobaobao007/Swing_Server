@@ -8,6 +8,9 @@ Java写的游戏服务器
 
 3:src/GameStart/ServerStart.java 启动就好了
 
+# 视频展示
+https://github.com/xiaobaobao007/Swing_Server/blob/master/resouce/video/video.wmv
+
 # 图片展示
 
 * 登录界面
