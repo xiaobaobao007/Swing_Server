@@ -121,7 +121,7 @@ public class UserDaoImp extends BaseDao implements UserDao {
 	}
 
 	/**
-	 * »ñÈ¡ËùÓĞ¹ÖÎïÊı¾İ
+	 * è·å–æ‰€æœ‰æ€ªç‰©æ•°æ®
 	 *
 	 * @return
 	 * @throws SQLException
@@ -161,7 +161,7 @@ public class UserDaoImp extends BaseDao implements UserDao {
 	}
 
 	/**
-	 * µ¥¸ö¹ÖÎï
+	 * å•ä¸ªæ€ªç‰©
 	 *
 	 * @param leave
 	 * @return
@@ -185,7 +185,7 @@ public class UserDaoImp extends BaseDao implements UserDao {
 	}
 
 	/**
-	 * ÉÌ³ÇÎïÆ·
+	 * å•†åŸç‰©å“
 	 *
 	 * @throws SQLException
 	 */
@@ -205,7 +205,7 @@ public class UserDaoImp extends BaseDao implements UserDao {
 	}
 
 	/**
-	 * ²éÑ¯¸öÈËÎïÆ·
+	 * æŸ¥è¯¢ä¸ªäººç‰©å“
 	 *
 	 * @param id
 	 * @return
@@ -224,7 +224,7 @@ public class UserDaoImp extends BaseDao implements UserDao {
 	}
 
 	/**
-	 * ¸Ä±äÊı¾İ¿âÄÚÈİ
+	 * æ”¹å˜æ•°æ®åº“å†…å®¹
 	 *
 	 * @param info
 	 * @throws SQLException

@@ -1,12 +1,12 @@
 package Enity;
 
-import java.io.IOException;
-import java.util.Random;
-
 import Controller.GameController;
 import Controller.OnlinePeopleController;
 import Controller.StateController;
 import GameStart.ServerStart;
+
+import java.io.IOException;
+import java.util.Random;
 
 public class EnemyPeople implements Runnable {
 
@@ -332,7 +332,7 @@ public class EnemyPeople implements Runnable {
 					//
 					// }
 				} catch (Exception e) {
-					System.out.println("����Ҵ��ڣ����" + people + "������");
+					System.out.println("怪物" + people + "自动销毁");
 					break;
 				}
 

@@ -15,32 +15,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ServerStart {
-    /**
-     * @param args
-     */
-    UserDaoImp userDaoImp = new UserDaoImp();
-    static GameStart gameStart;
-    static int leave;
-    public static boolean GameState = true;
+	/**
+	 * @param args
+	 */
+	UserDaoImp userDaoImp = new UserDaoImp();
+	static GameStart gameStart;
+	static int leave;
+	public static boolean GameState = true;
+	private transient boolean TF = true;
 
-    ServerStart(Socket socket) {
-        try {
-            DataInputStream dis = new DataInputStream(socket.getInputStream());
-            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+	ServerStart(Socket socket) {
+		try {
+			DataInputStream dis = new DataInputStream(socket.getInputStream());
+			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
-            Connect connect = new Connect(dis, dos,socket);
-            Thread thread = new Thread(connect);
-            thread.start();
+			Connect connect = new Connect(dis, dos, socket);
+			Thread thread = new Thread(connect);
+			thread.start();
 
-        } catch (IOException e) {
-            System.out.println("456");
-        }
-    }
+		} catch (IOException e) {
+			System.out.println("456");
+		}
+	}
 
     @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception {
         try {
-            ServerSocket ss = new ServerSocket(80);// 端口号
+            ServerSocket ss = new ServerSocket(8080);// 端口号
             System.out.println("服务器已启动，等待用户连接");
             GameStart.PrepareGame();
             while (true) {
@@ -122,7 +123,6 @@ public class ServerStart {
         public void run() {
             String info = null;
             String[] a = null;
-            boolean TF = true;
             while (TF) {
                 try {
                     if ((info = dis.readUTF()) != null) {

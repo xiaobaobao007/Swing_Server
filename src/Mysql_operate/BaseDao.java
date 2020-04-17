@@ -3,10 +3,10 @@ package Mysql_operate;
 import java.sql.*;
 
 class BaseDao {
-    private static String driver="com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/rpcgame";
+    private static String driver = "com.mysql.cj.jdbc.Driver";
+	private static String url = "jdbc:mysql://localhost:3306/rpggame?serverTimezone=Asia/Shanghai";
     private static String user="root";
-	private static String password = "password";
+	private static String password = "123456";
         static {
             try {
                 Class.forName(driver);
