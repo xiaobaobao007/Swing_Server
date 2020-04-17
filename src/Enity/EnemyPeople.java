@@ -33,7 +33,7 @@ public class EnemyPeople implements Runnable {
 	private int blood;
 	int scope = 15;
 	private Integer beattack_peo;
-	private boolean alive = true;
+	private transient boolean alive = true;
 	private int direct;
 	private int people;
 	private int enemy_img_state = 1;

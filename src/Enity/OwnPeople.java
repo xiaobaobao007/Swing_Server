@@ -20,15 +20,11 @@ public class OwnPeople {
 	boolean weapon_state = false;
 	int sleep_time = 100;
 	private GameMap map;
-	private int leave;
+	private transient int leave;
 
 	private Attribute attribute;
 	private DataInputStream dis;
 	private DataOutputStream dos;
-
-	OwnPeople() {
-		super();
-	}
 
 	public OwnPeople(Attribute attribute, DataInputStream dis, DataOutputStream dos) {
 		super();

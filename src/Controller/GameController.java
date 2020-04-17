@@ -102,7 +102,7 @@ public class GameController implements Runnable {
 		Enemys.get(Ene_id).setAlive(false);
 		die_enemy++;
 		ServerStart.OutStreamExceptOne(Peo_id, Ene_id + ":0302");
-		if (die_enemy == leave_maxsNums[leave - 1][minleave] && minleave < leave_maxs[leave - 1] - 1) {
+		if (die_enemy >= leave_maxsNums[leave - 1][minleave] && minleave < leave_maxs[leave - 1] - 1) {
 			try {
 				Rest_Enemy(monster_nums[leave - 1][++minleave]);
 			} catch (IOException e) {
