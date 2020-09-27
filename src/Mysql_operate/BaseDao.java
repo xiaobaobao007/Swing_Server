@@ -3,34 +3,35 @@ package Mysql_operate;
 import java.sql.*;
 
 class BaseDao {
-    private static String driver = "com.mysql.cj.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/rpggame?serverTimezone=Asia/Shanghai";
-    private static String user="root";
-	private static String password = "123456";
-        static {
-            try {
-                Class.forName(driver);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        
-    static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, user, password);    
-    }
-    
-    static void closeAll(Connection conn, Statement stmt, ResultSet rs) throws SQLException {
-        if(rs!=null) {
-            rs.close();
-        }
-        if(stmt!=null) {
-            stmt.close();
-        }
-        if(conn!=null) {
-            conn.close();
-        }
-    }
-    
+	private static final String driver = "com.mysql.cj.jdbc.Driver";
+	private static final String url = "jdbc:mysql://localhost:3306/rpggame?serverTimezone=Asia/Shanghai";
+	private static final String user = "root";
+	private static final String password = "123456";
+
+	static {
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(url, user, password);
+	}
+
+	static void closeAll(Connection conn, Statement stmt, ResultSet rs) throws SQLException {
+		if (rs != null) {
+			rs.close();
+		}
+		if (stmt != null) {
+			stmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+	}
+
 
 //    public static int executeSQL(String preparedSql, Object[] param) throws ClassNotFoundException {
 //        Connection conn = null;

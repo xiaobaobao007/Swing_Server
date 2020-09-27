@@ -28,7 +28,7 @@ public class Goods {
 	}
 
 	public Goods(String name, int leave, int type, int id, int x, int y, int money, String note, int power, int magic,
-			int skill, int speed, int physical, int armor, int resistance, int effect, int effect_leave) {
+				 int skill, int speed, int physical, int armor, int resistance, int effect, int effect_leave) {
 		super();
 		this.name = name;
 		this.leave = leave;
@@ -52,8 +52,8 @@ public class Goods {
 
 	public String getString() {
 		return ";" + name + ":" + leave + ":" + type + ":" + id + ":" + money + ":" + note + ":" + power + ":" + magic
-				+ ":" + skill + ":" + speed + ":" + physical + ":" + armor + ":" + resistance + ":" + effect + ":"
-				+ effect_leave;
+					   + ":" + skill + ":" + speed + ":" + physical + ":" + armor + ":" + resistance + ":" + effect + ":"
+					   + effect_leave;
 	}
 
 	public String getName() {

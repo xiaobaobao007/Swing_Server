@@ -1,12 +1,12 @@
 package Enity;
 
+import java.io.IOException;
+import java.util.Random;
+
 import Controller.GameController;
 import Controller.OnlinePeopleController;
 import Controller.StateController;
 import GameStart.ServerStart;
-
-import java.io.IOException;
-import java.util.Random;
 
 public class EnemyPeople implements Runnable {
 
@@ -36,11 +36,11 @@ public class EnemyPeople implements Runnable {
 	private transient boolean alive = true;
 	private int direct;
 	private int people;
-	private int enemy_img_state = 1;
+	private final int enemy_img_state = 1;
 	boolean weapon_state = false;
 	private Thread thread;
 	private Attribute attribute;
-	private StateController stateController;
+	private final StateController stateController;
 
 	public EnemyPeople(int people, int x, int y, Attribute attribute) {
 		super();
@@ -199,12 +199,12 @@ public class EnemyPeople implements Runnable {
 		this.thread = thread;
 	}
 
-	public boolean map_collision(int nvert, int ver[][], float testx, float testy) {
+	public boolean map_collision(int nvert, int[][] ver, float testx, float testy) {
 		int i, j;
 		boolean c = false;
 		for (i = 0, j = nvert - 1; i < nvert; j = i++) {
 			if (((ver[i][1] > testy) != (ver[j][1] > testy))
-					&& (testx < (ver[j][0] - ver[i][0]) * (testy - ver[i][1]) / (ver[j][1] - ver[i][1]) + ver[i][0]))
+						&& (testx < (ver[j][0] - ver[i][0]) * (testy - ver[i][1]) / (ver[j][1] - ver[i][1]) + ver[i][0]))
 				c = !c;
 		}
 		return c;
@@ -256,7 +256,7 @@ public class EnemyPeople implements Runnable {
 	@Override
 	public String toString() {
 		return ";" + x + ":" + y + ":" + speed + ":" + full_blood + ":" + blood + ":" + hurt + ":" + direct + ":"
-				+ people;
+					   + people;
 	}
 
 	@Override
@@ -291,18 +291,18 @@ public class EnemyPeople implements Runnable {
 										direct = (int) (Math.random() * 4);
 									}
 									switch (direct) {
-									case 0:
-										y_collision(y - speed, people);
-										break;
-									case 1:
-										x_collision(x + speed, people);
-										break;
-									case 2:
-										y_collision(y + speed, people);
-										break;
-									case 3:
-										x_collision(x - speed, people);
-										break;
+										case 0:
+											y_collision(y - speed, people);
+											break;
+										case 1:
+											x_collision(x + speed, people);
+											break;
+										case 2:
+											y_collision(y + speed, people);
+											break;
+										case 3:
+											x_collision(x - speed, people);
+											break;
 									}
 								} else {
 									int[] a = OnlinePeopleController.people_xy(this.beattack_peo);

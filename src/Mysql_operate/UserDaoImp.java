@@ -107,7 +107,7 @@ public class UserDaoImp extends BaseDao implements UserDao {
 		ResultSet rs = stmt.executeQuery();
 		OwnPeople ownpeople = null;
 		if (rs.next()) {
-			Attribute attribute = new Attribute(0,0, rs.getInt("id"), rs.getInt("imgId"),
+			Attribute attribute = new Attribute(0, 0, rs.getInt("id"), rs.getInt("imgId"),
 					rs.getString("name") + "," + rs.getInt("leave"), rs.getInt("money"), rs.getInt("con_phy_attack"),
 					rs.getInt("con_mag_attack"), rs.getInt("con_MP"), rs.getInt("con_blow"), rs.getInt("con_shooting"),
 					rs.getInt("con_dodge"), rs.getInt("con_speed_action"), rs.getInt("con_HP"),

@@ -1,16 +1,16 @@
 package Controller;
 
-import Enity.EnemyPeople;
-import Enity.GameMap;
-import Enity.Goods;
-import GameStart.GameStart;
-import GameStart.ServerStart;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
+import Enity.EnemyPeople;
+import Enity.GameMap;
+import Enity.Goods;
+import GameStart.GameStart;
+import GameStart.ServerStart;
 
 @SuppressWarnings("ALL")
 public class GameController implements Runnable {
@@ -72,8 +72,7 @@ public class GameController implements Runnable {
 		for (Goods one : GameController.all_goods) {
 			if (i == 0 && m > 0) {
 				string1 = new StringBuffer("5:0501");
-			}
-			else if (i == 0 && m == 0) {
+			} else if (i == 0 && m == 0) {
 				string1 = new StringBuffer(n + ":0501");
 			}
 			i++;

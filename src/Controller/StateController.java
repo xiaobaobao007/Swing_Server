@@ -50,35 +50,23 @@ public class StateController implements Runnable {
 	}
 
 	public synchronized boolean Attack() {
-		if (attack == 1&& vertigo == 0 && frozen == 0)
-			return true;
-		return false;
+		return attack == 1 && vertigo == 0 && frozen == 0;
 	}
 
 	public synchronized boolean Magic() {
-		if (magic == 1)
-			return true;
-		return false;
+		return magic == 1;
 	}
 
 	public synchronized boolean Move() {
-		if (move == 1 && vertigo == 0 && frozen == 0)
-			return true;
-		return false;
+		return move == 1 && vertigo == 0 && frozen == 0;
 	}
 
 	public synchronized boolean Vertigo() {
-		if (vertigo == 1)
-			return true;
-		else
-			return false;
+		return vertigo == 1;
 	}
 
 	public synchronized boolean Frozen() {
-		if (frozen == 1)
-			return true;
-		else
-			return false;
+		return frozen == 1;
 	}
 
 	public synchronized void TF_Attack() {
@@ -136,7 +124,7 @@ public class StateController implements Runnable {
 			}
 		}
 	}
-	
+
 //	public static void main(String[] args) throws InterruptedException {
 //		StateController s=new StateController();
 //		System.out.println(s.Move());
@@ -147,5 +135,5 @@ public class StateController implements Runnable {
 //		Thread.sleep(300);
 //		System.out.println(s.Move());
 //	}
-	
+
 }

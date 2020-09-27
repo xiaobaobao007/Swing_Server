@@ -9,18 +9,18 @@ public class User {
 	public User() {
 		super();
 	}
-	
-	public User(int id,String username, String password) {
+
+	public User(int id, String username, String password) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -46,5 +46,5 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
 
-	
+
 }

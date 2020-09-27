@@ -1,21 +1,21 @@
 package Controller;
 
+import java.awt.*;
+import java.io.IOException;
+import java.util.Vector;
+
 import Enity.EnemyPeople;
 import Enity.GameMap;
 import Enity.OnlinePeople;
 import Enity.OwnPeople;
 import GameStart.ServerStart;
 
-import java.awt.*;
-import java.io.IOException;
-import java.util.Vector;
-
 public class OnlinePeopleController {
 
 	private static final int MAX_PEOPLES = 6;
 	public static Vector<OnlinePeople> onlinePeoples = new Vector<>();// 玩家集合
 	public static int online_people = 0;// 在线玩家数量
-	private static int[] peoplesIndex = new int[MAX_PEOPLES];// 根据玩家id查找Index
+	private static final int[] peoplesIndex = new int[MAX_PEOPLES];// 根据玩家id查找Index
 
 	/**
 	 * 增加玩家
@@ -86,8 +86,8 @@ public class OnlinePeopleController {
 			Point point = GameMap.gamemap.getPoint(level);
 			int x = (int) point.getX();
 			int y = (int) point.getY();
-			ServerStart.OutStreamOne(one.getId(),one.getId()+":0208:"+x+":"+y);
-			ServerStart.OutStreamExceptOne(one.getId(), one.getId()+":0209:"+x+":"+y);
+			ServerStart.OutStreamOne(one.getId(), one.getId() + ":0208:" + x + ":" + y);
+			ServerStart.OutStreamExceptOne(one.getId(), one.getId() + ":0209:" + x + ":" + y);
 		}
 	}
 
@@ -252,14 +252,14 @@ public class OnlinePeopleController {
 	public synchronized static void change_people(int Id, int type, int value) {
 
 		switch (type) {
-		case 0:
-			onlinePeoples.get(peoplesIndex[Id]).getOwnPeople().setX(value);
-			break;
-		case 1:
-			onlinePeoples.get(peoplesIndex[Id]).getOwnPeople().setY(value);
-			break;
-		default:
-			break;
+			case 0:
+				onlinePeoples.get(peoplesIndex[Id]).getOwnPeople().setX(value);
+				break;
+			case 1:
+				onlinePeoples.get(peoplesIndex[Id]).getOwnPeople().setY(value);
+				break;
+			default:
+				break;
 		}
 	}
 

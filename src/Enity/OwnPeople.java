@@ -13,7 +13,7 @@ public class OwnPeople {
 	private int speed;
 	private int behurt;
 	private int behurt_time;
-	private int state = -1;
+	private final int state = -1;
 	private int blood;
 	private int magic;
 	private int people;
@@ -23,8 +23,8 @@ public class OwnPeople {
 	private transient int leave;
 
 	private Attribute attribute;
-	private DataInputStream dis;
-	private DataOutputStream dos;
+	private final DataInputStream dis;
+	private final DataOutputStream dos;
 
 	public OwnPeople(Attribute attribute, DataInputStream dis, DataOutputStream dos) {
 		super();

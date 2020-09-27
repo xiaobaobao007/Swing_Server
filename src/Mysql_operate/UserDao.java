@@ -5,12 +5,14 @@ import java.util.List;
 
 import Enity.User;
 
-public interface UserDao{
-	
+public interface UserDao {
+
 	List<User> findAllUsers() throws SQLException;
-	
-	int userLogin(String username,String password) throws SQLException;
-	boolean userRegist(String username,String password) throws SQLException;
+
+	int userLogin(String username, String password) throws SQLException;
+
+	boolean userRegist(String username, String password) throws SQLException;
+
 	boolean username(String username) throws SQLException;
-    
+
 }
